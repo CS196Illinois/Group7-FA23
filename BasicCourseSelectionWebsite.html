@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Course Selection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #courseInput {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+        }
+        #courseList {
+            list-style-type: none;
+            padding: 0;
+        }
+        .courseItem {
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #f8f8f8;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Course Selection</h1>
+    <input type="text" id="courseInput" onkeyup="searchCourse()" placeholder="Search for courses..">
+    <ul id="courseList">
+        <!-- Course items will be added here -->
+    </ul>
+
+    <script>
+        var courses = [
+            // Add your course data here
+            // Example: { name: 'Introduction to NLP', code: 'NLP101' }
+        ];
+
+        function searchCourse() {
+            var input = document.getElementById('courseInput');
+            var filter = input.value.toUpperCase();
+            var ul = document.getElementById('courseList');
+            ul.innerHTML = '';
+            
+            for (i = 0; i < courses.length; i++) {
+                var course = courses[i];
+                if (course.name.toUpperCase().indexOf(filter) > -1) {
+                    var li = document.createElement('li');
+                    li.className = 'courseItem';
+                    li.textContent = course.name + ' (' + course.code + ')';
+                    ul.appendChild(li);
+                }
+            }
+        }
+    </script>
+</body>
+</html>
